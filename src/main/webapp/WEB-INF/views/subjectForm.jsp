@@ -43,18 +43,47 @@
 	            <li class="active"><a href="<c:url value="/" />">Home</a></li>
 	            <li><a href="<c:url value="/users" />">Users</a></li>
 	            <li><a href="<c:url value="/subjects" />">Subjects</a></li>
-	            <li><a href="<c:url value="/mark" />">Notes</a></li>
+	            <li><a href="<c:url value="/mark" />">Mark</a></li>
 	          </ul>
 	        </div>   			      		 
 	  </div>
 	</div>
 
-	<br/><br/><br/>
-	<div class="col-lg-12">
-		<h1>BRAND</h1>
+
+<div class="col-lg-12">
+	  <fieldset>
+	    <legend>User Input From</legend>
+	    <form:form class="form" action="saveSubject" method="post" modelAttribute="subject">
+	      <table class="table table-striped">
+	        <tr>
+	          <th>Name</th>
+	          <td>
+	            <form:input path="name" /> 
+	            <form:errors path="name" cssClass="error" />
+	          </td>
+	          <td><button class="btn-primary"type="submit">Submit</button></td>
+	        </tr>
+	      </table>
+	    </form:form>
+	  </fieldset>
+	  <br>
+	  <br>
+	
+	  <fieldset>
+	    <legend>Subjects List</legend>
+	    <table class="resltTable">
+	      <tr>
+	        <th>Name</th>
+	      </tr>
+	      <c:forEach items="${subjects}" var="subject">
+	        <tr>
+	          <td>${subject.name}</td>
+	        </tr>
+	      </c:forEach>
+	
+	    </table>
+	  </fieldset>
 	</div>
-	
-	
 </div>
 
 <script src="webjars/jquery/1.9.1/jquery.min.js"></script>

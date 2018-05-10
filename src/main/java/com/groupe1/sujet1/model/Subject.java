@@ -1,23 +1,16 @@
 package com.groupe1.sujet1.model;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Email;
-
-
 
 @Entity
-@Table(name = "USER_TBL")
-public class User {
+@Table(name = "SUBJECT_TBL")
+public class Subject {
 
    @Id
    @GeneratedValue
@@ -25,19 +18,10 @@ public class User {
    private Long id;
 
    @Column(name = "NAME")
-   @Size(max = 20, min = 3, message = "{user.name.invalid}")
+   @Size(max = 20, min = 3, message = "{subject.name.invalid}")
    private String name;
 
-   
-   
-   @Column(name = "EMAIL", unique = true)
-   @Email(message = "{user.email.invalid}")
-   private String email;
-
-   
-    
-
-
+  
    public Long getId() {
       return id;
    }
@@ -53,16 +37,6 @@ public class User {
    public void setName(String name) {
       this.name = name;
    }
-
-   public String getEmail() {
-      return email;
-   }
-
-   public void setEmail(String email) {
-      this.email = email;
-   }
-
-
 
 
 }

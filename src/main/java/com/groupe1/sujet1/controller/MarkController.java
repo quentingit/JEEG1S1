@@ -12,26 +12,50 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.groupe1.sujet1.model.Mark;
+import com.groupe1.sujet1.model.Subject;
 import com.groupe1.sujet1.model.User;
+import com.groupe1.sujet1.service.MarkService;
 import com.groupe1.sujet1.service.UserService;
-
 
 
 @Controller
 public class MarkController {
 
-	   @Autowired
-	   private UserService userService;
+	@Autowired
+	private MarkService markService;
+	@Autowired
+    private UserService userService;
 	   
-  // private MarkService markService;
 
    @GetMapping("/mark")
    public String userForm(Locale locale, Model model) {
 
+	  //for marks
+      model.addAttribute("mark", new Mark());
+      model.addAttribute("marks", markService.list());
+      
+      //for users
       model.addAttribute("user", new User());
-      model.addAttribute("users", userService.list());
+	  model.addAttribute("users", userService.list());
 
-      return "mark";
+      return "markForm";
+   }
+   
+   
+   @PostMapping("/saveMark")
+   public String saveUser(@ModelAttribute("mark") @Valid Mark mark,
+         BindingResult result, Model model) {
+
+      if (result.hasErrors()) {
+        
+         model.addAttribute("marks", markService.list());
+         return "markForm";
+      }
+
+      markService.save(mark);
+
+      return "redirect:/mark";
    }
 
 

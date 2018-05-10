@@ -13,7 +13,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import static org.hibernate.cfg.Environment.*;
 import com.groupe1.sujet1.model.User;
-
+import com.groupe1.sujet1.model.Subject;
 
 
 
@@ -55,7 +55,7 @@ public class AppConfig {
             env.getProperty("hibernate.c3p0.max_statements"));
 
       factoryBean.setHibernateProperties(props);
-      factoryBean.setAnnotatedClasses(User.class);
+      factoryBean.setPackagesToScan(new String[] { "com.groupe1.sujet1.model" });
       return factoryBean;
    }
 

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.groupe1.sujet1.model.User;
-import com.groupe1.sujet1.service.UserService;
+import com.groupe1.sujet1.model.Subject;
+import com.groupe1.sujet1.service.SubjectService;
 
 
 
@@ -21,29 +21,29 @@ import com.groupe1.sujet1.service.UserService;
 public class SubjectController {
 
    @Autowired
-   private UserService userService;
+   private SubjectService subjectService;
 
    @GetMapping("/subjects")
    public String userForm(Locale locale, Model model) {
 
-      model.addAttribute("user", new User());
-      model.addAttribute("users", userService.list());
+      model.addAttribute("subject", new Subject());
+      model.addAttribute("subjects", subjectService.list());
 
-      return "userForm";
+      return "subjectForm";
    }
 
    @PostMapping("/saveSubject")
-   public String saveUser(@ModelAttribute("user") @Valid User user,
+   public String saveUser(@ModelAttribute("subject") @Valid Subject subject,
          BindingResult result, Model model) {
 
       if (result.hasErrors()) {
         
-         model.addAttribute("users", userService.list());
-         return "userForm";
+         model.addAttribute("subjects", subjectService.list());
+         return "subjectForm";
       }
 
-      userService.save(user);
+      subjectService.save(subject);
 
-      return "redirect:/";
+      return "redirect:/subjects";
    }
 }

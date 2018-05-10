@@ -26,6 +26,8 @@
 <body>
 
 <div class="container">
+
+
 	<div class="navbar navbar-inverse navbar-fixed-top">
 	  <div class="container">
 	    <div class="navbar-header">                                   
@@ -41,7 +43,7 @@
 	            <li class="active"><a href="<c:url value="/" />">Home</a></li>
 	            <li><a href="<c:url value="/users" />">Users</a></li>
 	            <li><a href="<c:url value="/subjects" />">Subjects</a></li>
-	            <li><a href="<c:url value="/mark" />">Notes</a></li>
+	            <li><a href="<c:url value="/mark" />">Mark</a></li>
 	          </ul>
 	        </div>   			      		 
 	  </div>
@@ -51,18 +53,13 @@
 <div class="col-lg-12">
 	  <fieldset>
 	    <legend>User Input From</legend>
-	    <form:form class="form" action="saveUser" method="post" modelAttribute="user">
+	    <form:form class="form" action="saveMark" method="post" modelAttribute="mark">
 	      <table class="table table-striped">
 	        <tr>
-	          <th>Name</th>
+	          <th>Mark</th>
 	          <td>
-	            <form:input path="name" /> 
-	            <form:errors path="name" cssClass="error" />
-	          </td>
-	          <th>Email</th>
-	          <td>
-	            <form:input path="email" /> 
-	            <form:errors path="email" cssClass="error" />
+	            <form:input path="mark" /> 
+	            <form:errors path="mark" cssClass="error" />
 	          </td>
 	          <td><button class="btn-primary"type="submit">Submit</button></td>
 	        </tr>
@@ -73,14 +70,34 @@
 	  <br>
 	
 	  <fieldset>
-	    <legend>Users List</legend>
+	    <legend>Mark List</legend>
 	    <table class="resltTable">
+	      <tr>
+	        <th>Mark</th>
+	      </tr>
+	      <c:forEach items="${marks}" var="mark">
+	        <tr>
+	          <td>${mark.mark} / 20 </td>
+	          
+	          <c:forEach var="usr" items="${mark.user}">
+			        <div style="padding-left:15px">Category id: ${usr.id}</div>
+			    </c:forEach>
+	          
+	          <td>${mark.user.name}  </td>
+	        </tr>
+	      </c:forEach>
+	
+	    </table>
+	    
+	    
+	       <table class="resltTable">
 	      <tr>
 	        <th>Name</th>
 	        <th>Email</th>
 	      </tr>
 	      <c:forEach items="${users}" var="user">
 	        <tr>
+	          <td>${user.id}</td>
 	          <td>${user.name}</td>
 	          <td>${user.email}</td>
 	        </tr>
