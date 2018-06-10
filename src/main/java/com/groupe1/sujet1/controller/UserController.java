@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.groupe1.sujet1.model.Mark;
 import com.groupe1.sujet1.model.User;
 import com.groupe1.sujet1.service.UserService;
 
@@ -28,8 +29,13 @@ public class UserController {
 
       model.addAttribute("user", new User());
       model.addAttribute("users", userService.list());
-
+      
+          
+      
+      
       return "userForm";
+      
+      
    }
 
    @PostMapping("/saveUser")
@@ -46,4 +52,18 @@ public class UserController {
 
       return "redirect:/users";
    }
+   
+   
+   
+   @PostMapping("/searchStudent")
+   public String searchStudent(@ModelAttribute("user") @Valid User user,
+         BindingResult result, Model model) {
+
+	    model.addAttribute("user", new User());
+	    model.addAttribute("users", userService.list());
+
+	    return "/searchResult";
+   }
+   
+   
 }

@@ -14,13 +14,21 @@ public class Subject {
 
    @Id
    @GeneratedValue
-   @Column(name = "UID")
+   @Column(name = "id_subject")
    private Long id;
 
    @Column(name = "NAME")
    @Size(max = 20, min = 3, message = "{subject.name.invalid}")
    private String name;
 
+   
+   
+   public Subject() {}
+  
+   
+   public Subject(String name) {
+	   this.name=name; 
+   }
   
    public Long getId() {
       return id;

@@ -1,7 +1,14 @@
 package com.groupe1.sujet1.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
 
 import com.groupe1.sujet1.model.Mark;
 import com.groupe1.sujet1.model.Subject;
@@ -22,10 +30,64 @@ import com.groupe1.sujet1.service.UserService;
 @Controller
 public class MarkController {
 
+
+		
+	
+	
+	
 	@Autowired
 	private MarkService markService;
+
 	@Autowired
-    private UserService userService;
+	private UserService userService;
+	   
+	
+	@GetMapping("/testmark")
+	   public String saveUser1(@ModelAttribute("mark") @Valid Mark mark,
+	         BindingResult result, Model model) {
+
+	      if (result.hasErrors()) {
+	        
+	         model.addAttribute("marks", markService.list());
+	         return "markForm";
+	      }
+	      
+	      Random rand = new Random();
+
+	      int  n = rand.nextInt(50) + 1;
+	      
+	      
+	      //RECUPER UN ETUDIANT EN OBJET
+	      
+	      //ENSUITE LUI AJOUTER UN UNE NOUVELLE NOTE
+	      
+	      
+	      //FAIRE UN SAVE OR UPDATE POUR REPLACER LES DONNEES DE CET OBJET
+	      
+	      
+	      
+	      //User student = new User("Cilia","test@gmail.com"+n);
+	      User student = new User(13,"Cilia","test@gmail.com7");
+	      
+	      
+		   Subject subject = new Subject("java");
+		   Mark mark1 = new Mark("18");
+		   mark1.setNote_formation(subject);
+	      
+	  	   List<Mark> listMark = new ArrayList<Mark>();
+	  	   listMark.add(mark1);
+	  	   
+	  	   
+	       student.setStudentNote(listMark);
+	      
+	     
+	        markService.save(mark1);
+	        userService.saveOrUpdate(student);
+
+	      return "redirect:/mark";
+	   }
+	
+	
 	   
 
    @GetMapping("/mark")
@@ -35,10 +97,12 @@ public class MarkController {
       model.addAttribute("mark", new Mark());
       model.addAttribute("marks", markService.list());
       
-      //for users
+      //for user
       model.addAttribute("user", new User());
-	  model.addAttribute("users", userService.list());
-
+      model.addAttribute("users", userService.list());
+      
+      
+    
       return "markForm";
    }
    
@@ -52,8 +116,9 @@ public class MarkController {
          model.addAttribute("marks", markService.list());
          return "markForm";
       }
-
-      markService.save(mark);
+   
+      
+      //markService.save(mark);
 
       return "redirect:/mark";
    }

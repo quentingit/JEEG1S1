@@ -43,15 +43,36 @@
 	            <li class="active"><a href="<c:url value="/" />">Home</a></li>
 	            <li><a href="<c:url value="/users" />">Users</a></li>
 	            <li><a href="<c:url value="/subjects" />">Subjects</a></li>
-	            <li><a href="<c:url value="/mark" />">Notes</a></li>
+	            <li><a href="<c:url value="/mark" />">Teacher</a></li>
 	          </ul>
 	        </div>   			      		 
 	  </div>
 	</div>
 
 	<br/><br/><br/>
+
+	
+	
 	<div class="col-lg-12">
-		<h1>INDEX SITE</h1>
+	  <fieldset>
+	    <form:form class="form" action="searchStudent" method="post" modelAttribute="user">
+	      <table class="table table-striped">
+	        <tr>
+	          <th>Rechercher un étudiant</th>
+	          <td>
+	            
+	          </td>
+	          <td><button class="btn-primary"type="submit">Submit</button></td>
+	        </tr>
+	      </table>
+	    </form:form>
+	  </fieldset>
+	  <br>
+	  <br>
+	  
+
+	  
+	  
 	</div>
 	
 	

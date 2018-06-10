@@ -42,8 +42,8 @@
 	          <ul class="nav navbar-nav">
 	            <li class="active"><a href="<c:url value="/" />">Home</a></li>
 	            <li><a href="<c:url value="/users" />">Users</a></li>
-	            <li><a href="<c:url value="/subjects" />">Subjects</a></li>
-	            <li><a href="<c:url value="/mark" />">Mark</a></li>
+	            <li class="active"><a href="<c:url value="/subjects" />">Subjects</a></li>
+	            <li><a href="<c:url value="/mark" />">Teacher</a></li>
 	          </ul>
 	        </div>   			      		 
 	  </div>
@@ -51,8 +51,9 @@
 
 
 <div class="col-lg-12">
+<br/><br/><br/><br/>
 	  <fieldset>
-	    <legend>User Input From</legend>
+	    <legend>Add Subject</legend>
 	    <form:form class="form" action="saveSubject" method="post" modelAttribute="subject">
 	      <table class="table table-striped">
 	        <tr>

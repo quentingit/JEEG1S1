@@ -20,6 +20,20 @@ public class UserDaoImp implements UserDao {
    public void save(User user) {
       sessionFactory.getCurrentSession().save(user);
    }
+   
+   
+   @Override
+   public void update(User user) {
+      sessionFactory.getCurrentSession().update(user);
+   }
+   
+   
+   @Override
+   public void saveOrUpdate(User user) {
+      sessionFactory.getCurrentSession().saveOrUpdate(user);
+   }
+   
+   
 
    @Override
    public List<User> list() {

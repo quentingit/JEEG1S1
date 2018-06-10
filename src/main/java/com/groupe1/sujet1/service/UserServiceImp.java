@@ -19,6 +19,11 @@ public class UserServiceImp implements UserService {
    public void save(User user) {
       userDao.save(user);
    }
+   
+   @Transactional
+   public void saveOrUpdate(User user) {
+      userDao.saveOrUpdate(user);
+   }
 
    @Transactional(readOnly = true)
    public List<User> list() {

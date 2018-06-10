@@ -26,8 +26,6 @@
 <body>
 
 <div class="container">
-
-
 	<div class="navbar navbar-inverse navbar-fixed-top">
 	  <div class="container">
 	    <div class="navbar-header">                                   
@@ -43,34 +41,29 @@
 	            <li ><a href="<c:url value="/" />">Home</a></li>
 	            <li><a href="<c:url value="/users" />">Users</a></li>
 	            <li><a href="<c:url value="/subjects" />">Subjects</a></li>
-	            <li class="active"><a href="<c:url value="/mark" />">Teacher</a></li>
+	            <li><a href="<c:url value="/mark" />">Teacher</a></li>
 	          </ul>
 	        </div>   			      		 
 	  </div>
-	</div>	
+	</div>
 
 
 <div class="col-lg-12">
-		<br/><br/><br/><br/>
 	  <fieldset>
-	    <legend>Add Mark</legend>
-	    <form:form class="form" action="saveMark" method="post" modelAttribute="user">
+	    <legend>User Input From</legend>
+	    <form:form class="form" action="saveUser" method="post" modelAttribute="user">
 	      <table class="table table-striped">
 	        <tr>
-	          <th>User</th>
-	          <th>Mark</th>
-	          <th>Subject</th>
+	          <th>Name</th>
 	          <td>
 	            <form:input path="name" /> 
-	         
+	            <form:errors path="name" cssClass="error" />
 	          </td>
-	            <td>
-	            <form:input path="user.studentNote.mark" /> 
-	      
+	          <th>Email</th>
+	          <td>
+	            <form:input path="email" /> 
+	            <form:errors path="email" cssClass="error" />
 	          </td>
-	      
-	          
-	          
 	          <td><button class="btn-primary"type="submit">Submit</button></td>
 	        </tr>
 	      </table>
@@ -79,33 +72,15 @@
 	  <br>
 	  <br>
 	
-	
-	<!--  
 	  <fieldset>
-	    <legend>Mark List</legend>
+	    <legend>Users List</legend>
 	    <table class="resltTable">
-	      <tr>
-	        <th>Mark</th>
-	        <th>Subject</th>
-	      </tr>
-	      <c:forEach items="${marks}" var="mark">
-	        <tr>
-	          <td> ${mark.mark} / 20 - </td>
-	          <td> ${mark.note_formation.name} </td>
-	        </tr>
-	      </c:forEach>
-	
-	    </table>
-	    
-	    
-	       <table class="resltTable">
 	      <tr>
 	        <th>Name</th>
 	        <th>Email</th>
 	      </tr>
 	      <c:forEach items="${users}" var="user">
 	        <tr>
-	          <td>${user.id}</td>
 	          <td>${user.name}</td>
 	          <td>${user.email}</td>
 	        </tr>
@@ -113,42 +88,6 @@
 	
 	    </table>
 	  </fieldset>
-	  -->
-	  
-	  
-	    <br>
-	
-	  <fieldset>
-	    <legend>Mark List</legend>
-	    <table class="resltTable">
-	      <tr>
-	        <th>Name</th>
-	        <th>Email</th>
-	      </tr>
-	      <c:forEach items="${users}" var="user">
-	        <tr>
-	          <td><u>${user.name} (${user.email}) : </u></td>
-	          
-	          <td>
-	          <c:forEach items="${user.studentNote}" var="mark">
-			              <tr>
-			              		<td>${mark.mark}</td>
-			              		<td>${mark.note_formation.name}</td>
-			              		
-			              </tr>
-			  </c:forEach>
-			  </td>
-	        </tr>
-	        <br/> <br/>
-           
-	      </c:forEach>
-	
-	    </table>
-	  </fieldset>
-	  
-	  
-	  
-	  
 	</div>
 </div>
 

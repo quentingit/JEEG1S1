@@ -39,9 +39,9 @@
 	        <div class="navbar-collapse collapse">  
 	          <ul class="nav navbar-nav">
 	            <li class="active"><a href="<c:url value="/" />">Home</a></li>
-	            <li><a href="<c:url value="/users" />">Users</a></li>
+	            <li class="active"><a href="<c:url value="/users" />">Users</a></li>
 	            <li><a href="<c:url value="/subjects" />">Subjects</a></li>
-	            <li><a href="<c:url value="/mark" />">Notes</a></li>
+	            <li><a href="<c:url value="/mark" />">Teacher</a></li>
 	          </ul>
 	        </div>   			      		 
 	  </div>
@@ -50,7 +50,8 @@
 
 <div class="col-lg-12">
 	  <fieldset>
-	    <legend>User Input From</legend>
+	  <br/><br/><br/><br/>
+	    <legend>Add User</legend>
 	    <form:form class="form" action="saveUser" method="post" modelAttribute="user">
 	      <table class="table table-striped">
 	        <tr>
@@ -81,8 +82,13 @@
 	      </tr>
 	      <c:forEach items="${users}" var="user">
 	        <tr>
-	          <td>${user.name}</td>
-	          <td>${user.email}</td>
+	          <td>${user.name} - </td>
+	          <td> ${user.email} </td>
+	          <td> modifier </td>
+	          <td> supprimer </td>
+
+
+	           
 	        </tr>
 	      </c:forEach>
 	
