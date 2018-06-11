@@ -49,41 +49,29 @@
 
 
 <div class="col-lg-12">
-	  <fieldset>
-	    <legend>User Input From</legend>
-	    <form:form class="form" action="saveUser" method="post" modelAttribute="user">
-	      <table class="table table-striped">
-	        <tr>
-	          <th>Name</th>
-	          <td>
-	            <form:input path="name" /> 
-	            <form:errors path="name" cssClass="error" />
-	          </td>
-	          <th>Email</th>
-	          <td>
-	            <form:input path="email" /> 
-	            <form:errors path="email" cssClass="error" />
-	          </td>
-	          <td><button class="btn-primary"type="submit">Submit</button></td>
-	        </tr>
-	      </table>
-	    </form:form>
-	  </fieldset>
-	  <br>
-	  <br>
+	  
+	  <br><br><br>
 	
-	  <fieldset>
-	    <legend>Users List</legend>
-	    <table class="resltTable">
+	   <fieldset>
+	    <legend>Recherche :  </legend>
+	    <table class=" table ">
 	      <tr>
 	        <th>Name</th>
-	        <th>Email</th>
+	        <th>Mail</th>
+	        <th>Notes</th>
 	      </tr>
 	      <c:forEach items="${users}" var="user">
 	        <tr>
-	          <td>${user.name}</td>
-	          <td>${user.email}</td>
+	          <td><u>${user.name} </u></td>
+	          <td><u>${user.email}</u></td>
+	          <td>
+	          <c:forEach items="${user.studentNote}" var="mark">
+			       ${mark.mark} - ${mark.note_formation.name}</br>			              		
+			  </c:forEach>
+			  </td>
 	        </tr>
+	        <br/> <br/>
+           
 	      </c:forEach>
 	
 	    </table>

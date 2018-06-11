@@ -42,6 +42,10 @@ public class MarkController {
 	private UserService userService;
 	   
 	
+	
+	
+	
+	//AJOUTER UNE NOTE OU MODIFIER LA NOTE
 	@GetMapping("/testmark")
 	   public String saveUser1(@ModelAttribute("mark") @Valid Mark mark,
 	         BindingResult result, Model model) {
@@ -59,6 +63,7 @@ public class MarkController {
 	      
 	      //RECUPER UN ETUDIANT EN OBJET
 	      
+	      
 	      //ENSUITE LUI AJOUTER UN UNE NOUVELLE NOTE
 	      
 	      
@@ -70,7 +75,7 @@ public class MarkController {
 	      User student = new User(13,"Cilia","test@gmail.com7");
 	      
 	      
-		   Subject subject = new Subject("java");
+		   Subject subject = new Subject("javaaaa");
 		   Mark mark1 = new Mark("18");
 		   mark1.setNote_formation(subject);
 	      
@@ -107,6 +112,8 @@ public class MarkController {
    }
    
    
+   
+   //SAVE MARK
    @PostMapping("/saveMark")
    public String saveUser(@ModelAttribute("mark") @Valid Mark mark,
          BindingResult result, Model model) {
@@ -123,5 +130,6 @@ public class MarkController {
       return "redirect:/mark";
    }
 
+   
 
 }

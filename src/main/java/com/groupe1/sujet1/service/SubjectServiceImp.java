@@ -19,6 +19,17 @@ public class SubjectServiceImp implements SubjectService {
    public void save(Subject subject) {
       subjectDao.save(subject);
    }
+   
+   @Transactional
+   public void updateSubject(Subject subject) {
+      subjectDao.updateSubject(subject);
+   }
+   
+   
+   @Transactional
+   public void deleteSubject(Subject subject) {
+      subjectDao.deleteSubject(subject);
+   }
 
    @Transactional(readOnly = true)
    public List<Subject> list() {

@@ -22,19 +22,33 @@ public class UserDaoImp implements UserDao {
    }
    
    
-   @Override
-   public void update(User user) {
-      sessionFactory.getCurrentSession().update(user);
-   }
-   
    
    @Override
    public void saveOrUpdate(User user) {
       sessionFactory.getCurrentSession().saveOrUpdate(user);
    }
    
+  
    
-
+   public void deleteStudent(User user) {
+      sessionFactory.getCurrentSession().delete(user);
+   }
+   
+   
+   public void updateStudent(User user) {
+	      sessionFactory.getCurrentSession().update(user);
+   }
+   
+   @Override
+   public List<User> listByName(Object name) {
+      @SuppressWarnings("unchecked")
+      TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User where name=:name");
+	query.setParameter("name", name);
+      return query.getResultList();
+      //where name=:name
+   }
+   
+   
    @Override
    public List<User> list() {
       @SuppressWarnings("unchecked")

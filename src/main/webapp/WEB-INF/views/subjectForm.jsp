@@ -55,7 +55,7 @@
 	  <fieldset>
 	    <legend>Add Subject</legend>
 	    <form:form class="form" action="saveSubject" method="post" modelAttribute="subject">
-	      <table class="table table-striped">
+	      <table class="table-striped table" >
 	        <tr>
 	          <th>Name</th>
 	          <td>
@@ -72,14 +72,33 @@
 	
 	  <fieldset>
 	    <legend>Subjects List</legend>
-	    <table class="resltTable">
+	    <table class="resltTable table">
 	      <tr>
 	        <th>Name</th>
+	        <th>Modify</th>
+	        <th>Delete</th>
 	      </tr>
 	      <c:forEach items="${subjects}" var="subject">
 	        <tr>
-	          <td>${subject.name}</td>
-	        </tr>
+	          
+	          <!-- FORM TO UPDATE -->  
+	            <form:form class="form" action="updatesubject" method="post" modelAttribute="subject">   
+	          <td>  <form:input path="name" value="${subject.name}"/>  </td>
+	          <td>          
+			        <form:hidden path="id" value="${subject.id}"  />
+			        <button class="btn-primary"type="submit">Modify</button>
+		     </form:form>  
+		     <!--  ENF FORM UPDATE -->    
+	          </td>
+			  <td>
+			      <form:form class="form" action="deletesubject" method="post" modelAttribute="subject">       
+			        <form:hidden path="id" value="${subject.id}"  />
+			        <button class="btn-primary"type="submit">Delete</button>
+				  </form:form>          
+	          </td>
+	          
+	          
+	        </tr>      
 	      </c:forEach>
 	
 	    </table>

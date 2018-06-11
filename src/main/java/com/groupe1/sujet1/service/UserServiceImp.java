@@ -24,10 +24,27 @@ public class UserServiceImp implements UserService {
    public void saveOrUpdate(User user) {
       userDao.saveOrUpdate(user);
    }
-
+   
+   
+   @Transactional
+   public void deleteStudent(User user) {
+      userDao.deleteStudent(user);
+   }
+   
+   @Transactional
+   public void updateStudent(User user) {
+      userDao.updateStudent(user);
+   }
+   
+   
    @Transactional(readOnly = true)
    public List<User> list() {
       return userDao.list();
+   }
+   
+   @Transactional(readOnly = true)
+   public List<User> listByName(Object name) {
+      return userDao.listByName(name);
    }
 
 }

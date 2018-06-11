@@ -23,6 +23,18 @@ public class SubjectDaoImp implements SubjectDao {
    }
 
    @Override
+   public void updateSubject(Subject subject) {
+      sessionFactory.getCurrentSession().update(subject);
+   }
+   
+   
+   @Override
+   public void deleteSubject(Subject subject) {
+      sessionFactory.getCurrentSession().delete(subject);
+   }
+   
+   
+   @Override
    public List<Subject> list() {
       @SuppressWarnings("unchecked")
       TypedQuery<Subject> query = sessionFactory.getCurrentSession().createQuery("from Subject");

@@ -54,13 +54,16 @@
 	
 	
 	<div class="col-lg-12">
-	  <fieldset>
+	 	  <fieldset>
+	  <br/><br/><br/><br/>
+	    <legend>Search User</legend>
 	    <form:form class="form" action="searchStudent" method="post" modelAttribute="user">
 	      <table class="table table-striped">
 	        <tr>
-	          <th>Rechercher un étudiant</th>
+	          <th>Name</th>
 	          <td>
-	            
+	            <form:input path="name" /> 
+	            <form:errors path="name" cssClass="error" />
 	          </td>
 	          <td><button class="btn-primary"type="submit">Submit</button></td>
 	        </tr>

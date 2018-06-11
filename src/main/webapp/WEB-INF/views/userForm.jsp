@@ -75,17 +75,33 @@
 	
 	  <fieldset>
 	    <legend>Users List</legend>
-	    <table class="resltTable">
+	    <table class="resltTable table">
 	      <tr>
 	        <th>Name</th>
 	        <th>Email</th>
+	        <th>Modify</th>
+	        <th>Delete</th>
+	        <th></th>
 	      </tr>
 	      <c:forEach items="${users}" var="user">
 	        <tr>
-	          <td>${user.name} - </td>
-	          <td> ${user.email} </td>
-	          <td> modifier </td>
-	          <td> supprimer </td>
+	          
+	          
+	         <form:form class="form" action="updatestudent" method="post" modelAttribute="user">   
+	          <td> <form:input path="name" value="${user.name}" />  </td>
+	          <td>  <form:input path="email" value="${user.email}"/>  </td>
+	          <td>          
+			        <form:hidden path="id" value="${user.id}"  />
+			        <button class="btn-primary"type="submit">Modify</button>
+		     </form:form>  
+	          
+	          </td>
+			  <td>
+			      <form:form class="form" action="deletestudent" method="post" modelAttribute="user">       
+			        <form:hidden path="id" value="${user.id}"  />
+			        <button class="btn-primary"type="submit">Delete</button>
+				  </form:form>          
+	          </td>
 
 
 	           

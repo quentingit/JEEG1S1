@@ -18,18 +18,22 @@ import com.groupe1.sujet1.service.UserService;
 @Controller
 public class IndexController {
 
+	
+   @Autowired
+   private UserService userService;
+	   
+	   
    @GetMapping("/")
    public String userForm(Locale locale, Model model) {
+	   
+	   model.addAttribute("user", new User());
+	   model.addAttribute("users", userService.list());
+	     
       return "index";
    }
    
    
-   
-   
-   @Autowired
-   private UserService userService;
-   
-   
+
    
 
 

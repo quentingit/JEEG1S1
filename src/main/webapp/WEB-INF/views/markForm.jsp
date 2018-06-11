@@ -65,7 +65,7 @@
 	         
 	          </td>
 	            <td>
-	            <form:input path="user.studentNote.mark" /> 
+	        
 	      
 	          </td>
 	      
@@ -76,70 +76,30 @@
 	      </table>
 	    </form:form>
 	  </fieldset>
-	  <br>
-	  <br>
-	
-	
-	<!--  
+
+
+
+
 	  <fieldset>
 	    <legend>Mark List</legend>
-	    <table class="resltTable">
-	      <tr>
-	        <th>Mark</th>
-	        <th>Subject</th>
-	      </tr>
-	      <c:forEach items="${marks}" var="mark">
-	        <tr>
-	          <td> ${mark.mark} / 20 - </td>
-	          <td> ${mark.note_formation.name} </td>
-	        </tr>
-	      </c:forEach>
-	
-	    </table>
-	    
-	    
-	       <table class="resltTable">
+	    <table class="table">
 	      <tr>
 	        <th>Name</th>
 	        <th>Email</th>
+	        <th>Note</th>
 	      </tr>
 	      <c:forEach items="${users}" var="user">
-	        <tr>
-	          <td>${user.id}</td>
-	          <td>${user.name}</td>
-	          <td>${user.email}</td>
-	        </tr>
-	      </c:forEach>
-	
-	    </table>
-	  </fieldset>
-	  -->
-	  
-	  
-	    <br>
-	
-	  <fieldset>
-	    <legend>Mark List</legend>
-	    <table class="resltTable">
-	      <tr>
-	        <th>Name</th>
-	        <th>Email</th>
-	      </tr>
-	      <c:forEach items="${users}" var="user">
-	        <tr>
-	          <td><u>${user.name} (${user.email}) : </u></td>
+	       <tr>
+	          <td><u>${user.name} </td>
+	          <td><u>${user.email} </u></td>
 	          
 	          <td>
-	          <c:forEach items="${user.studentNote}" var="mark">
-			              <tr>
-			              		<td>${mark.mark}</td>
-			              		<td>${mark.note_formation.name}</td>
-			              		
-			              </tr>
+	          <c:forEach items="${user.studentNote}" var="mark">        
+			     
+			      ${mark.mark} - ${mark.note_formation.name} <br/>              	
 			  </c:forEach>
 			  </td>
 	        </tr>
-	        <br/> <br/>
            
 	      </c:forEach>
 	
