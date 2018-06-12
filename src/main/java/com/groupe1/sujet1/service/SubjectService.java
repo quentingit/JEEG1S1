@@ -8,7 +8,9 @@ public interface SubjectService {
    void save(Subject subject);
    void updateSubject(Subject subject);
    void deleteSubject(Subject subject);
+   Subject subjectById(Long id);
    List<Subject> list();
+
    
 }
 

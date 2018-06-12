@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.groupe1.sujet1.model.Mark;
+import com.groupe1.sujet1.model.Subject;
 
 
 @Repository
@@ -28,5 +29,13 @@ public class MarkDaoImp implements MarkDao {
       TypedQuery<Mark> query = sessionFactory.getCurrentSession().createQuery("from Mark");
       return query.getResultList();
    }
+   
+   
+   @Override
+   public void deleteMark(Mark mark) {
+      sessionFactory.getCurrentSession().delete(mark);
+   }
+   
+   
 
 }

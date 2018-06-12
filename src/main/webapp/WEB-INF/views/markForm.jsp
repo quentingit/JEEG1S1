@@ -54,26 +54,45 @@
 		<br/><br/><br/><br/>
 	  <fieldset>
 	    <legend>Add Mark</legend>
-	    <form:form class="form" action="saveMark" method="post" modelAttribute="user">
+	    <form:form class="form" action="addmarkuser" method="post"  commandName="all" >
 	      <table class="table table-striped">
 	        <tr>
 	          <th>User</th>
 	          <th>Mark</th>
 	          <th>Subject</th>
-	          <td>
-	            <form:input path="name" /> 
-	         
-	          </td>
-	            <td>
-	        
-	      
-	          </td>
-	      
+	          <th></th> 
+	          <tr>
+		          <td>
+						
+					  <form:select  path="user.id"> 
+			            <form:option value="" label="select"> -----  </form:option>  
+			            
+			             <c:forEach items="${users}" var="user">
+			                     <form:option value="${user.id}" label="select"> ${user.name} </form:option>            
+			             </c:forEach>   
+			                
+			 		   </form:select>
+		             
+		          </td>
+		          <td>
+				        <form:input path="mark.mark" />  /20	          
+		          </td>
+		          <td>
+		                <form:select  path="subject.id"> 
+			            <form:option value="" label="select"> -----  </form:option>  
+			            
+			             <c:forEach items="${subjects}" var="subject">
+			                     <form:option value="${subject.id}" label="select"> ${subject.name} </form:option>            
+			             </c:forEach>   
+			                
+			 		   </form:select>
+		          
+		          </td>
+		          <td><button class="btn-primary"type="submit">Submit</button></td>
+	           </tr>
+	      	   </table>
 	          
-	          
-	          <td><button class="btn-primary"type="submit">Submit</button></td>
-	        </tr>
-	      </table>
+	    
 	    </form:form>
 	  </fieldset>
 
@@ -84,21 +103,30 @@
 	    <legend>Mark List</legend>
 	    <table class="table">
 	      <tr>
+	        <th>Id</th>
 	        <th>Name</th>
 	        <th>Email</th>
 	        <th>Note</th>
 	      </tr>
 	      <c:forEach items="${users}" var="user">
 	       <tr>
-	          <td><u>${user.name} </td>
-	          <td><u>${user.email} </u></td>
+	          <td>${user.id} </td>
+	          <td>${user.name} </td>
+	          <td><i>${user.email} </i></td>
 	          
 	          <td>
 	          <c:forEach items="${user.studentNote}" var="mark">        
 			     
-			      ${mark.mark} - ${mark.note_formation.name} <br/>              	
+			      ${mark.mark} - ${mark.note_formation.name} - ${mark.id}
+			      <form:form class="form" action="deletemark" method="post" modelAttribute="mark">       
+			        <form:hidden path="id" value="${mark.id}"  />
+			        <button class="btn-primary"type="submit">Delete</button>
+				  </form:form>  
+				  
+			       <br/>              	
 			  </c:forEach>
 			  </td>
+
 	        </tr>
            
 	      </c:forEach>

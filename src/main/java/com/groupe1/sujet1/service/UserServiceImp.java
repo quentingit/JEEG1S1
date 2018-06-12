@@ -46,5 +46,10 @@ public class UserServiceImp implements UserService {
    public List<User> listByName(Object name) {
       return userDao.listByName(name);
    }
+   
+   @Transactional(readOnly = true)
+   public  User userById(Long id) {
+      return userDao.userById(id);
+   }
 
 }

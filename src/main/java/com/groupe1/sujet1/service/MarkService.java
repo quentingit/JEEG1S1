@@ -6,6 +6,7 @@ import com.groupe1.sujet1.model.Mark;
 
 public interface MarkService {
    void save(Mark mark);
-
+   void deleteMark(Mark mark);
    List<Mark> list();
+
 }

@@ -12,6 +12,7 @@ public interface UserDao {
    
    List<User> list();
    List<User> listByName(Object name);
+   User userById(long id);
 
     
 	

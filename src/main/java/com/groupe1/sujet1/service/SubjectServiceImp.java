@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.groupe1.sujet1.dao.SubjectDao;
 import com.groupe1.sujet1.model.Subject;
+import com.groupe1.sujet1.model.User;
 
 @Service
 public class SubjectServiceImp implements SubjectService {
@@ -31,6 +32,13 @@ public class SubjectServiceImp implements SubjectService {
       subjectDao.deleteSubject(subject);
    }
 
+   
+   @Transactional(readOnly = true)
+   public  Subject subjectById(Long id) {
+      return subjectDao.subjectById(id);
+   }
+   
+   
    @Transactional(readOnly = true)
    public List<Subject> list() {
       return subjectDao.list();

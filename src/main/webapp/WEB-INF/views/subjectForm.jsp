@@ -61,6 +61,8 @@
 	          <td>
 	            <form:input path="name" /> 
 	            <form:errors path="name" cssClass="error" />
+	            
+	            
 	          </td>
 	          <td><button class="btn-primary"type="submit">Submit</button></td>
 	        </tr>
@@ -87,7 +89,7 @@
 	          <td>          
 			        <form:hidden path="id" value="${subject.id}"  />
 			        <button class="btn-primary"type="submit">Modify</button>
-		     </form:form>  
+		       </form:form>  
 		     <!--  ENF FORM UPDATE -->    
 	          </td>
 			  <td>
@@ -96,6 +98,7 @@
 			        <button class="btn-primary"type="submit">Delete</button>
 				  </form:form>          
 	          </td>
+	          
 	          
 	          
 	        </tr>      

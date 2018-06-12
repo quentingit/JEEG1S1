@@ -6,13 +6,15 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 
 import javax.persistence.CascadeType;
+
+
+
 
 
 	@Entity
@@ -78,6 +80,9 @@ import javax.persistence.CascadeType;
 	public void setNote_formation(Subject note_formation) {
 		this.note_formation = note_formation;
 	}
+
+
+
    
    
 

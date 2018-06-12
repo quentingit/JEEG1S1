@@ -31,7 +31,7 @@ public class User {
    @Id
    @GeneratedValue
    @Column(name = "id_user")
-   private Long id;
+   public Long id;
 
    @Column(name = "NAME")
    @Size(max = 20, min = 3, message = "{user.name.invalid}")

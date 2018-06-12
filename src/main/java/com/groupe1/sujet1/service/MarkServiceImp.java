@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.groupe1.sujet1.dao.MarkDao;
 import com.groupe1.sujet1.model.Mark;
+import com.groupe1.sujet1.model.Subject;
 
 @Service
 public class MarkServiceImp implements MarkService {
@@ -24,5 +25,11 @@ public class MarkServiceImp implements MarkService {
    public List<Mark> list() {
       return markDao.list();
    }
+   
+   @Transactional
+   public void deleteMark(Mark mark) {
+      markDao.deleteMark(mark);
+   }
+
 
 }

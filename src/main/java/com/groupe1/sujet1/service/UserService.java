@@ -12,6 +12,7 @@ public interface UserService {
    
    List<User> list();
    List<User> listByName(Object name);
+   User userById(Long id);
 
 
 }

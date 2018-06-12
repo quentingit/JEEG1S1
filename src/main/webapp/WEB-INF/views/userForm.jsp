@@ -77,6 +77,7 @@
 	    <legend>Users List</legend>
 	    <table class="resltTable table">
 	      <tr>
+	        <th>Id</th>
 	        <th>Name</th>
 	        <th>Email</th>
 	        <th>Modify</th>
@@ -87,7 +88,8 @@
 	        <tr>
 	          
 	          
-	         <form:form class="form" action="updatestudent" method="post" modelAttribute="user">   
+	         <form:form class="form" action="updatestudent" method="post" modelAttribute="user">  
+	          <td> ${user.id} </td> 
 	          <td> <form:input path="name" value="${user.name}" />  </td>
 	          <td>  <form:input path="email" value="${user.email}"/>  </td>
 	          <td>          
